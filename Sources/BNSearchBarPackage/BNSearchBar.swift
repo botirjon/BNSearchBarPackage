@@ -187,6 +187,7 @@ open class BNSearchBar: UIControl {
     
     @objc private func clearButtonTapped(_ sender: UIButton) {
         self.text = nil
+        self.delegate?.searchBar(self, textDidChange: "")
     }
     
     @objc private func editingChanged(_ sender: BNSearchBarTextField) {
@@ -275,7 +276,6 @@ public extension BNSearchBar {
         set {
             searchTextField.text = newValue
             updateRightViewVisibility()
-            self.delegate?.searchBar(self, textDidChange: newValue ?? "")
         }
         get {
             searchTextField.text
