@@ -67,7 +67,7 @@ open class BNSearchBar: UIControl {
     
     private lazy var searchImageView: UIImageView = {
         let leftView = UIImageView()
-        leftView.tintColor = DefaultAttributes.placeholderColor
+        leftView.tintColor = placeholderColor
         leftView.translatesAutoresizingMaskIntoConstraints = false
         leftView.contentMode = .scaleAspectFit
         let img = UIImage(systemName: "magnifyingglass")
@@ -102,6 +102,10 @@ open class BNSearchBar: UIControl {
     private var _placeholderColor: UIColor? = DefaultAttributes.placeholderColor {
         didSet {
             setPlaceholder(self.placeholder)
+            searchImageView.tintColor = _placeholderColor
+            clearButton.tintColor = _placeholderColor
+            searchTextField.rightView?.tintColor = _placeholderColor
+            searchTextField.leftView?.tintColor = _placeholderColor
         }
     }
     
